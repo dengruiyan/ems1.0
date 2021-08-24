@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+    <!--用户-->
+    <package name="user" extends="struts-default" namespace="/user">
+        <action name="user_*" class="userAction" method="{1}">
+        </action>
+    </package>
+    <package name="employee" extends="struts-default" namespace="/employee">
+        <action name="employee_*" class="employeeAction" method="{1}">
+            <result name="findAll" type="dispatcher">/ems/emplist.jsp</result>
+            <result name="deleteByIdToFindAll" type="redirectAction">employee_findAll</result>
+            <result name="selectByIdToUpdate" type="dispatcher">/ems/updateEmp.jsp</result>
+            <result name="updateToFindAll" type="redirectAction">employee_findAll</result>
+            <result name="addToFindAll" type="redirectAction">employee_findAll</result>
+        </action>
+    </package>
+</struts>

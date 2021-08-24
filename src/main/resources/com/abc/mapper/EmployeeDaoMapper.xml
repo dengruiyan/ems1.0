@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc.dao.EmployeeDao">
+    <!--//查询所有员工：List<Employee> findAll();-->
+    <select id="findAll" resultType="Employee">
+        select id,name,salary,age from employee
+    </select>
+    <!--//根据id删除员工：void deleteById(@Param("id") String id);-->
+    <delete id="deleteById">
+        delete from employee where id = #{id}
+    </delete>
+    <!--//根据id查询员工信息:User selectById(@Param("id") String id);-->
+    <select id="selectById" resultType="Employee">
+        select id,name,salary,age from employee where id = #{id}
+    </select>
+    <!--//修改员工信息:void update(Employee employee);-->
+    <update id="update" parameterType="Employee">
+        update employee set name = #{name}, salary = #{salary}, age = #{age}
+        where id = #{id}
+    </update>
+    <!--//添加员工信息:void insert(Employee employee);-->
+    <insert id="insert" parameterType="Employee">
+        insert into employee (id, name, salary, age) values (#{id}, #{name}, #{salary}, #{age});
+    </insert>
+</mapper>
